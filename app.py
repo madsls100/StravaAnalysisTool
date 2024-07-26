@@ -6,17 +6,17 @@ import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
+WEBPAGE_URL = os.getenv("WEBPAGE_URL")
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
 
 def redirect_to_strava_authentication() -> str:
     auth_uri = "https://www.strava.com/oauth/authorize"
-    redirect_uri = "http://localhost:8501"
     params = {
         "client_id": CLIENT_ID,
         "response_type": "code",
-        "redirect_uri": redirect_uri,
+        "redirect_uri": WEBPAGE_URL,
         "approval_prompt": "force",
         "scope": "activity:read_all",
     }
